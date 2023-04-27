@@ -1,0 +1,153 @@
+<div class="text-layout">
+    <h1 class="h1">Pipes no comunes</h1>
+    <p class="p">
+        Pipes incluidos usualmente en el common module
+    </p>
+</div>
+
+<div class="grid">
+
+    <div class="col md:col-6 sm:col-9">
+
+        <!-- Filedset -->
+
+        <p-fieldset legend="I18nSelect Pipe" [toggleable]="true">
+            Hola {{nombre}}, es un placer 
+            {{genero | i18nSelect: invitacionMapa}}
+            a nuestro evento
+        </p-fieldset>
+
+        <div class="p">
+            <button 
+                (click)="cambiarUsuario()" 
+                pButton type="button" 
+                label="Cambiar usuario"
+                class="p-button-success" >
+                
+            </button>
+        </div>
+
+    </div>
+
+    <div class="col md:col-6 sm:col-9">
+
+        <!-- Filedset -->
+
+        <!-- i19nPlural sirve para cuando por ejemplo queremos
+        mostrar un mensaje dependiendo de si es singular
+        o plural, para eso se tiene que hacer un mapa en
+        component que especifique lo que pasara-->
+
+        <p-fieldset legend="I18nPlural Pipe" [toggleable]="true">
+            Actualmente {{clientes.length | i18nPlural: clientesMapa}}
+        </p-fieldset>
+
+        <div class="p">
+            <button 
+                (click)="borrarUsuario()" 
+                pButton type="button" 
+                label="Borrar usuario"
+                class="p-button-danger" >
+                
+            </button>
+        </div>
+
+    </div>
+    <div class="col md:col-6 sm:col-9">
+    
+        <p-fieldset legend="Slide Pipe" [toggleable]="true">
+         
+            <b>Original</b>
+
+            <pre>{{clientes}}</pre>
+
+            <b>slice 0:2</b>
+
+            <pre>{{clientes | slice:0:2}}</pre>
+
+            <b>slice 1:2</b>
+
+            <pre>{{clientes | slice:1:2}}</pre>
+
+            <b>slice 1:3</b>
+
+            <pre>{{clientes | slice:1:3}}</pre>
+
+            <b>Cortar nombre</b>
+
+            <pre>{{nombre | slice:0:3}}</pre>
+
+        </p-fieldset>
+
+      
+        </div>
+
+        <div class="col md:col-6 sm:col-9">
+
+            <!-- sirve para hacer depuraciones, para saber de que tipo es el objeto -->
+        
+        <p-fieldset legend="JsonPipe" [toggleable]="true">
+            
+         <pre>
+            {{heroes | json}}
+         </pre>
+            
+        </p-fieldset>
+
+      
+        </div>
+
+        <div class="col md:col-6 sm:col-9">
+
+            <!-- para mostrar un objeto literal de js en el html
+            o trabajar con sus propiedades -->
+    
+            <p-fieldset legend="KeyValuePipe" [toggleable]="true">
+                
+               <ul>
+
+                <!-- tomo los valores del json, el key y el value 
+                y armo el contenido -->
+
+                <li *ngFor="let item of persona | keyvalue">
+                   <b> {{item.key | titlecase}}</b> : {{item.value}}
+                </li>
+
+               </ul>
+                
+            </p-fieldset>
+    
+          
+            </div>
+
+            <div class="col md:col-6 sm:col-9">
+        
+                <p-fieldset legend="Async Pipe" [toggleable]="true">
+
+                    <!-- funciona solo sobre observable o promesas -->
+                    <!-- imprimira los cambios que este emitiendo
+                    el -->
+                    <pre *ngIf="!(miObservable| async)">Resolviendo observable</pre>
+                    <pre>{{miObservable | async}}
+                    </pre>
+
+                    <!-- la promesa dara el valor que de la promesa,
+                    desp de 1000ms -->
+
+                    <pre *ngIf="!(valorPromesa | async)">Resolviendo la promesa</pre>
+
+                    <pre>{{valorPromesa | async}}
+
+                    </pre>
+                    
+                </p-fieldset>
+        
+              
+            </div>
+
+            
+
+     
+
+</div>
+

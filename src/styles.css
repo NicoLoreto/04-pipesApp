@@ -1,0 +1,12 @@
+html, body{
+    margin: 10px;
+    background: var(--surface-b);
+   
+    /* uso la var del :root primeng*/
+    font-family: var(--font-family);
+}
+
+.text-layout{
+    color: var(--text-color);
+}
+

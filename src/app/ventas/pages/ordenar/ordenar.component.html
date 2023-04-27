@@ -1,0 +1,129 @@
+<!--  para crear un pipe angular tiene comandos especificos.
+para hacerlo manual hay que crear un archivo con .pipe.ts
+dentro de una carpeta pipes-->
+
+
+
+<div class="text-layout">
+    <h1 class="h1">Pipes personalizados</h1>
+    <p-fieldset legend="Personalizado Mayuscula" [toggleable]="true">
+        <pre>
+            Cambiar palabra de estado: {{palabra | mayusculas: boolean}}
+        </pre>
+
+      <!-- <div class="text-layout">    
+    <p-fieldset legend="Personalizado Invertir" [toggleable]="true">
+
+        <pre>
+            Palabra invertida: {{'Palabra Invertida'| invertir}}
+        </pre>
+        
+    </p-fieldset>
+</div> -->
+
+    </p-fieldset>
+</div>
+
+
+<!-- Toolbar componente de ngprime para agrupar -->
+
+<p-toolbar>
+
+    <div class="p-toolbar-group-start">
+       
+      
+       
+    </div>
+    <div class="p-toolbar-group-end">
+
+        <p-button 
+        label="Primary"
+        (onClick)="cambiarBoolean()"
+        label="Cambiar estado de palabra"
+        class="mr-1 p">
+
+    </p-button>
+       <button pButton
+       icon="pi pi-sort"
+       label="Por nombre"
+       class="mr-1"
+       (click)="cambiarOrden('nombre')"></button>
+
+       <button pButton
+       icon="pi pi-sort"
+       label="Vuela"
+       class="mr-1 p-button-success"
+       (click)="cambiarOrden('vuela')"></button>
+
+       <button pButton
+       icon="pi pi-sort"
+       label="Por color"
+       class="mr-1 p-button-help"
+       (click)="cambiarOrden('color')"></button>
+    </div>
+</p-toolbar>
+
+<div class="p-grid">
+    <div class="p-col mt-2">
+
+        <!-- ordenarPor es una variable que defini '' en components -->
+        
+<p-table [value]="heroes | ordenar : ordenarPor" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombre</th>
+            <th>Vuela</th>
+            <th>Color</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-heroe>
+        <tr>
+            <td>{{heroe.nombre}}</td>
+            <td>{{heroe.vuela | vuela | titlecase}}</td>
+            <td>{{heroe.color}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+    </div>
+</div>
+
+<!-- otra tabla pero usando ngprime -->
+
+<div class="p-toolbar-group">
+       
+    <p-fieldset legend="Usando sort de ngprime para ordenar tabla" [toggleable]="true">
+      
+
+
+
+<div class="p-grid">
+    <div class="p-col mt-2">
+
+<!-- en la siguiente tabla slice:0 se usa para que ngprime no mute la tabla anterior -->
+        
+<p-table [value]="heroes | slice:0" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+            <th pSortableColumn="vuela">Vuela <p-sortIcon field="vuela"></p-sortIcon></th>
+            <th pSortableColumn="color">Color <p-sortIcon field="color"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-heroe>
+        <tr>
+            <td>{{heroe.nombre}}</td>
+            <td>{{heroe.vuela | vuela | titlecase}}</td>
+            <td>{{heroe.color}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+    </div>
+</div>
+
+</p-fieldset>
+       
+</div>
+
+
+
+

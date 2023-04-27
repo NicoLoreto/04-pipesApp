@@ -1,0 +1,122 @@
+<div class="text-layout">
+    <h1 class="h1">Pipes Básicos</h1>
+    <p class="p">
+        Pipes incluidos usualmente en el common module
+    </p>
+</div>
+
+<!--  estoy usando flexbox de primeNg
+las clases son similares a bootstrap -->
+
+<!-- {{ value_expression | date [ : format [ : timezone [ : locale ] ] ] }} -->
+
+<!-- texto -->
+
+<div class="grid">
+    <div class="col-4">
+        <p-card header="uppercase"
+                [subheader]="nombreLower | uppercase">
+                {{nombreLower | uppercase}}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="lowercase"
+                [subheader]="nombreUpper | lowercase">
+                {{nombreUpper | lowercase}}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="titlecase"
+                [subheader]="nombreCompleto | titlecase">
+                {{nombreCompleto | titlecase}}
+        </p-card>
+    </div>
+</div>
+
+<!-- date -->
+
+<div class="text-layout">
+    <h1 class="h1">Date | Fecha | Pipe</h1>
+    <p class="p">
+        Pipes para fechas
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-6">
+        <p-card class="card-date">
+            <ul class="ul">
+                <li class="li">
+                    fecha
+                </li>
+                <li class="li">
+                    fecha | date
+                </li>
+                <li class="li">
+                    fecha | date: 'short'
+                </li>
+                <li class="li">
+                    fecha | date: 'long'
+                </li>
+                <li class="li">
+                    fecha | date: 'hh:mm:ss a'
+                </li>
+                <li class="li">
+                    fecha | date: 'yyyy'
+                </li>
+            </ul>
+
+            <hr>
+
+            <ul class="ul">
+                <li class="li">
+                    fecha | date: 'long': 'GMT-6': 'es-Ar'
+                </li>
+                <li class="li">
+                    fecha | date: 'long': 'GMT-5': 'en'
+                </li>
+                <li class="li">
+                    fecha | date: 'long': 'GMT-8': 'fr'
+                </li>
+            </ul>
+        
+        </p-card>
+    
+    </div>
+    <div class="col-6">
+        <p-card class="card-date">
+            <ul class="ul">
+                <li class="li">
+                    {{fecha}}
+                </li>
+                <li class="li">
+                    {{fecha | date}}
+                </li>
+                <li class="li">
+                    {{fecha | date: 'short'}}
+                </li>
+                <li class="li">
+                    {{fecha | date: 'long'}}
+                </li>
+                <li class="li">
+                    {{fecha | date: 'hh:mm:ss a'}}
+                </li>
+                <li class="li">
+                    {{fecha | date: 'yyyy'}}
+                </li>
+            </ul>
+            <hr>
+                <ul class="ul">
+                    <li class="li">
+                        {{ fecha | date: 'long': 'GMT-6': 'es-Ar'}}
+                    </li>
+                    <li class="li">
+                        {{ fecha | date: 'long': 'GMT-5': 'en'}}
+                    </li>
+                    <li class="li">
+                        {{ fecha | date: 'long': 'GMT-8': 'fr'}}
+                    </li>
+                </ul>
+    </p-card>
+    </div>
+</div>
